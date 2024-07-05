@@ -8,6 +8,19 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
+    "baseUrl": ".",
+    "paths": {
+        "@assets/*": ["./src/assets/*"],
+        "@styles/*": ["./src/styles/*"],
+        "@hooks/*": ["./src/hooks/*"],
+        "@services/*": ["./src/services/*"],
+        "@contexts/*": ["./src/contexts/*"],
+        "@types/*": ["./src/types/*"],
+        "@layouts/*": ["./src/layouts/*"],
+        "@components/*": ["./src/components/*"],
+        "@pages/*": ["./src/pages/*"]
+    },
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
