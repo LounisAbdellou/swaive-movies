@@ -17,7 +17,7 @@ export default defineConfig({
       "@hooks": `${path.resolve(__dirname, "./src/hooks/")}`,
 			"@services": `${path.resolve(__dirname, "./src/services/")}`,
 			"@contexts": `${path.resolve(__dirname, "./src/contexts/")}`,
-      "@types": `${path.resolve(__dirname, "./src/types/")}`,
+      "@src/types": `${path.resolve(__dirname, "./src/types/")}`,
 			"@layouts": `${path.resolve(__dirname, "./src/layouts/")}`,
       "@components": `${path.resolve(__dirname, "./src/components/")}`,
       "@pages": `${path.resolve(__dirname, "./src/pages/")}`,

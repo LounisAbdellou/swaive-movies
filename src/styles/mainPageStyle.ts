@@ -11,6 +11,13 @@ export const MoviesContainer = styled.div`
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 26px;
+
+	h1 {
+		margin-top: 80px;
+		font-weight: var(--heading-weight);
+		font-size: var(--heading-large);
+		color: var(--text);
+	}
 `;
 
 export const MovieBox = styled.div`
@@ -58,9 +65,11 @@ export const MovieDetailsContainer = styled.div`
 	@media (max-width: 820px) {
 		flex-direction: column;
 		align-items: center;
-	}
 
-	@media (max-width: 620px) {
+		p {
+			font-size: var(--body-small);
+		}
+
 		img {
 			width: 150px;
 		}

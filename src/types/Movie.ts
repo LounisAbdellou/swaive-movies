@@ -1,7 +1,12 @@
 export type MovieContextTypes = {
 	movies: Movie[];
+	movieDetails: MovieDetails | null;
+	moviesQuery: string;
+	currentPage: number;
 	totalPages: number;
-	getMovies: () => void;
+	getMovies: (page: number) => void;
+	searchMovies: (query: string, page: number) => void;
+	getMovieDetails: (movieId: number) => void;
 };
 
 export type Movie = {

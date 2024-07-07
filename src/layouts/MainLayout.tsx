@@ -1,10 +1,8 @@
 // Libraries
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import _ from "lodash";
 
 // Utilities
-import { MainLayoutProps } from "@types/Layout";
 import { useMovie } from "@hooks/useMovie.ts";
 import * as styled from "@styles/mainLayoutStyle";
 
@@ -14,8 +12,7 @@ type Props = {
 };
 
 const MainLayout: React.FC<Props> = ({ children, setCurrentPage }) => {
-	let timeout;
-	const navigate = useNavigate();
+	let timeout: ReturnType<typeof setTimeout>;
 	const movieContext = useMovie();
 
 	const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,11 +29,16 @@ const MainLayout: React.FC<Props> = ({ children, setCurrentPage }) => {
 		}, 1500);
 	};
 
+	const handleOnClick = () => {
+		movieContext.getMovies(1);
+		setCurrentPage(1);
+	};
+
 	return (
 		<styled.LayoutContainer>
 			<styled.NavBar>
 				<styled.TitleContainer>
-					<styled.Title onClick={() => navigate("/")}>Swaive Movies</styled.Title>
+					<styled.Title onClick={handleOnClick}>Swaive Movies</styled.Title>
 				</styled.TitleContainer>
 				<styled.SearchBarContainer>
 					<styled.SearchBar

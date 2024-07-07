@@ -3,8 +3,7 @@ import _ from "lodash";
 import { ReactNode, createContext, useRef, useState } from "react";
 
 // Utilities
-import { getTimeDiffInMinutes } from "@helpers/dateTime";
-import { Movie, MovieDetails, MovieContextTypes, StoredDataTypes } from "@types/Movie";
+import { Movie, MovieDetails, MovieContextTypes } from "@src/types/Movie.ts";
 import { fetchPopularMovies, fetchMovieDetails, fetchSearchMovies } from "@services/movieServices";
 
 export const MovieContext = createContext<MovieContextTypes>(null!);
@@ -37,7 +36,7 @@ export const MovieProvider = ({ children }: { children: ReactNode }) => {
 	};
 
 	const getMovieDetails = async (movieId: number) => {
-		if (!_.isEmpty(setMovieDetails) && setMovieDetails.id === movieId) {
+		if (!_.isEmpty(movieDetails) && movieDetails.id === movieId) {
 			return;
 		}
 

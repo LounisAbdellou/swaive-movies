@@ -3,17 +3,16 @@ import { useEffect } from "react";
 import _ from "lodash";
 
 // Utilities
-import { Movie } from "@types/Movie";
+import { Movie } from "@src/types/Movie";
 import { useMovie } from "@hooks/useMovie.ts";
 import * as styled from "@styles/mainPageStyle.ts";
 
 type Props = {
-	currentPage: number;
 	openModal: () => void;
 	posterUrl: string;
 };
 
-const MoviesListing: React.FC<{ Props }> = ({ currentPage, openModal, posterUrl }) => {
+const MoviesListing: React.FC<Props> = ({ openModal, posterUrl }) => {
 	const movieContext = useMovie();
 
 	useEffect(() => {
@@ -27,16 +26,20 @@ const MoviesListing: React.FC<{ Props }> = ({ currentPage, openModal, posterUrl 
 
 	return (
 		<styled.MoviesContainer>
-			{movieContext.movies.map((movie: Movie) => {
-				return (
-					<styled.MovieBox key={movie.id} onClick={() => handleOnClick(movie.id)}>
-						<styled.PosterContainer>
-							<img src={posterUrl + movie.poster_path} />
-						</styled.PosterContainer>
-						<styled.TitleContainer>{movie.title}</styled.TitleContainer>
-					</styled.MovieBox>
-				);
-			})}
+			{!_.isEmpty(movieContext.movies) ? (
+				movieContext.movies.map((movie: Movie) => {
+					return (
+						<styled.MovieBox key={movie.id} onClick={() => handleOnClick(movie.id)}>
+							<styled.PosterContainer>
+								<img src={posterUrl + movie.poster_path} />
+							</styled.PosterContainer>
+							<styled.TitleContainer>{movie.title}</styled.TitleContainer>
+						</styled.MovieBox>
+					);
+				})
+			) : (
+				<h1>No movies found</h1>
+			)}
 		</styled.MoviesContainer>
 	);
 };

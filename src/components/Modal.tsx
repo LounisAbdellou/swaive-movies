@@ -3,7 +3,7 @@ import React from "react";
 
 // Utilities
 import { Box, Content, Header, Wrapper, Footer } from "@styles/modalStyle";
-import { xMark } from "@assets/";
+import { xMark } from "@assets/index.ts";
 
 type ModalProps = {
 	isOpen: boolean;
@@ -24,7 +24,7 @@ type ModalFooterProps = {
 	children?: JSX.Element | JSX.Element[] | string;
 };
 
-const Modal = ({ isOpen, onClose, children }: IModal) => {
+const Modal = ({ isOpen, onClose, children }: ModalProps) => {
 	const handleOutsideClick = (event: React.MouseEvent<HTMLDivElement>) => {
 		if (event.target === event.currentTarget) {
 			onClose();
@@ -44,7 +44,7 @@ const Modal = ({ isOpen, onClose, children }: IModal) => {
 	);
 };
 
-Modal.Header = ({ children, onClose }: IModalHeader) => {
+Modal.Header = ({ children, onClose }: ModalHeaderProps) => {
 	return (
 		<Header>
 			<div>{children}</div>
@@ -53,11 +53,11 @@ Modal.Header = ({ children, onClose }: IModalHeader) => {
 	);
 };
 
-Modal.Content = ({ children }: IModalContent) => {
+Modal.Content = ({ children }: ModalContentProps) => {
 	return <Content>{children}</Content>;
 };
 
-Modal.Footer = ({ children }: IModalFooter) => {
+Modal.Footer = ({ children }: ModalFooterProps) => {
 	return <Footer>{children}</Footer>;
 };
 

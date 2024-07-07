@@ -1,9 +1,7 @@
 // Libraries
-import { useEffect } from "react";
 import _ from "lodash";
 
 // Utilities
-import { Movie } from "@types/Movie";
 import { useMovie } from "@hooks/useMovie.ts";
 import * as styled from "@styles/mainPageStyle.ts";
 
@@ -12,10 +10,10 @@ type Props = {
 	handlePageChange: (page: number) => void;
 };
 
-const Pagination: React.FC<{ Props }> = ({ currentPage, handlePageChange }) => {
+const Pagination: React.FC<Props> = ({ currentPage, handlePageChange }) => {
 	const movieContext = useMovie();
 
-	const pageRange = (totalPages, currPage) => {
+	const pageRange = (totalPages: number, currPage: number) => {
 		const pages = [];
 		const maxVisiblePages = 12;
 		let startPage = Math.max(1, currPage - Math.floor(maxVisiblePages / 2));
@@ -28,7 +26,7 @@ const Pagination: React.FC<{ Props }> = ({ currentPage, handlePageChange }) => {
 		return pages;
 	};
 
-	return (
+	return !_.isEmpty(movieContext.movies) ? (
 		<styled.PaginationContainer>
 			<styled.PaginationBox onClick={() => handlePageChange(Math.max(1, currentPage - 1))}>
 				{"<"}
@@ -50,6 +48,8 @@ const Pagination: React.FC<{ Props }> = ({ currentPage, handlePageChange }) => {
 				{">"}
 			</styled.PaginationBox>
 		</styled.PaginationContainer>
+	) : (
+		<></>
 	);
 };
 

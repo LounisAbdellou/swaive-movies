@@ -35,11 +35,7 @@ const MainPage = () => {
 	return (
 		<MainLayout setCurrentPage={setCurrentPage}>
 			<styled.MainContainer>
-				<MoviesListing
-					currentPage={currentPage}
-					openModal={handleModalOpen}
-					posterUrl={posterUrl}
-				/>
+				<MoviesListing openModal={handleModalOpen} posterUrl={posterUrl} />
 				<Pagination currentPage={currentPage} handlePageChange={handlePageChange} />
 				<DetailsModal
 					showModal={showModal}

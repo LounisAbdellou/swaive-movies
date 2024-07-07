@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
 export const Box = styled.div`
 	margin: 20px;
 	width: 100%;
+	max-height: 95%;
 	background-color: var(--background);
 	border-radius: 16px;
 `;

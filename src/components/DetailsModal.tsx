@@ -14,14 +14,14 @@ type Props = {
 	posterUrl: string;
 };
 
-const DetailsModal: React.FC<{ Props }> = ({ showModal, closeModal, posterUrl }) => {
+const DetailsModal: React.FC<Props> = ({ showModal, closeModal, posterUrl }) => {
 	const movieContext = useMovie();
 
 	return (
 		<Modal isOpen={showModal} onClose={closeModal}>
 			<Modal.Header>Movie Details</Modal.Header>
 			<Modal.Content>
-				{!_.isEmpty(movieContext.movieDetails) && (
+				{!_.isEmpty(movieContext.movieDetails) ? (
 					<styled.MovieDetailsContainer>
 						<img src={posterUrl + movieContext.movieDetails.poster_path} />
 						<div>
@@ -51,6 +51,8 @@ const DetailsModal: React.FC<{ Props }> = ({ showModal, closeModal, posterUrl })
 							</p>
 						</div>
 					</styled.MovieDetailsContainer>
+				) : (
+					<></>
 				)}
 			</Modal.Content>
 			<Modal.Footer></Modal.Footer>
