@@ -34,6 +34,39 @@ export const MovieBox = styled.div`
 	}
 `;
 
+export const MovieDetailsContainer = styled.div`
+	display: flex;
+	color: var(--text);
+	gap: 20px;
+
+	h1 {
+		font-weight: var(--heading-weight);
+		font-size: var(--heading-medium);
+		text-decoration: underline;
+	}
+
+	span {
+		font-weight: var(--heading-weight);
+	}
+
+	@media (max-width: 1000px) {
+		img {
+			width: 250px;
+		}
+	}
+
+	@media (max-width: 820px) {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	@media (max-width: 620px) {
+		img {
+			width: 150px;
+		}
+	}
+`;
+
 export const PosterContainer = styled.div`
 	flex: 1 1 auto;
 
@@ -72,9 +105,7 @@ export const PaginationBox = styled.li<{ $isCurrent?: boolean }>`
 	color: var(${(props) => (props.$isCurrent ? "--secondary" : "--text")});
 	transition: 0.3s;
 	border: 1px solid;
-	border-color: var(
-		${(props) => (props.$isCurrent ? "--secondary" : "--text")}
-	);
+	border-color: var(${(props) => (props.$isCurrent ? "--secondary" : "--text")});
 	display: flex;
 	align-items: center;
 	justify-content: center;
